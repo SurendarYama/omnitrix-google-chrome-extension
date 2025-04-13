@@ -1,0 +1,15 @@
+{
+  "name": "Omnitrix",
+  "description": "Web development helper tools",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "js" : ["json-formatter.js"],
+      "matches":["https://*/*", "http://*/*"]
+    }
+  ]
+}
