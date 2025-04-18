@@ -1,3 +1,5 @@
+document.querySelector('pre').remove();
+document.querySelector('.json-formatter-container').remove();
 
 const getLengthOfObject = (obj) => Object.keys(obj).length;
 
@@ -10,6 +12,10 @@ const loopArray = (arr, parentNode) => {
             loopObject(arr[i], newNode);
         } else if (Array.isArray(arr[i])) {
             loopArray(arr[i], newNode);
+        } else {
+            (typeof arr[i] === 'string') ?
+                newNode.innerHTML = `<strong>${i}</strong>: "${arr[i]}"`
+                :   newNode.innerHTML = `<strong>${i}</strong>: ${arr[i]}`
         }
     }
     return parentNode;
@@ -59,8 +65,6 @@ const main = async () => {
         }
         const result = await res.json();
         const html = generateHtml(result);
-        document.querySelector('pre').remove();
-        document.querySelector('.json-formatter-container').remove();
         document.body.append(html);
     } catch (err){
         console.log(err);
