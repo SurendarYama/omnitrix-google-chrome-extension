@@ -1,6 +1,3 @@
-document.querySelector('pre').remove();
-document.querySelector('.json-formatter-container').remove();
-
 const getLengthOfObject = (obj) => Object.keys(obj).length;
 
 const loopArray = (arr, parentNode) => {
@@ -63,6 +60,8 @@ const main = async () => {
         if(! resContnentType.includes("application/json")){
             return;
         }
+        document.querySelector('pre').remove();
+        document.querySelector('.json-formatter-container').remove();
         const result = await res.json();
         const html = generateHtml(result);
         document.body.append(html);
